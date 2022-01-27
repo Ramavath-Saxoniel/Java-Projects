@@ -10,7 +10,8 @@ class Guess extends JFrame{
     ButtonListener bl1;
     ButtonListener2 bl2;
     ButtonListener3 bl3;    
-
+    JLabel bgimg;
+    
     //setting random number in rand variable
     int rand=(int) (Math.random()*1000); 
     int count=0;
@@ -23,7 +24,11 @@ class Guess extends JFrame{
         c.setLayout(null);   
 
         //Set Background Color
-        c.setBackground(Color.green); 
+        c.setBackground(Color.green);
+        bgimg = new JLabel(new ImageIcon("C:\\Users\\Desktop\\RIVER.jpg"));
+        c.add(bgimg);
+        bgimg.setLayout(null);
+        bgimg.setSize(750, 500);
 
         //Creating label Guess my number text
         JLabel j=new JLabel("GUESS MY NUMBER");
@@ -75,7 +80,7 @@ class Guess extends JFrame{
 
         //creating button for guessing
         JButton b1=new JButton("GUESS");
-        b1.setBackground(Color.orange);
+        b1.setBackground(Color.ORANGE);
         b1.setSize(125,35);
         b1.setLocation(290,225);
         bl1=new ButtonListener();        
@@ -106,18 +111,18 @@ class Guess extends JFrame{
         j3.setLocation(250, 275);        
         
         //Place the components in the pane
-        c.add(j5);    
-        c.add(j4);    
-        c.add(j);    
-        c.add(j1);
-        c.add(t1);
-        c.add(t2);
-        c.add(t3);
-        c.add(b1);    
-        c.add(b2);
-        c.add(b3);        
-        c.add(j6);
-        c.add(j3);
+        bgimg.add(j5);    
+        bgimg.add(j4);    
+        bgimg.add(j);    
+        bgimg.add(j1);
+        bgimg.add(t1);
+        bgimg.add(t2);
+        bgimg.add(t3);
+        bgimg.add(b1);    
+        bgimg.add(b2);
+        bgimg.add(b3);        
+        bgimg.add(j6);
+        bgimg.add(j3);
 
         //Changing TextFields to UnEditable
         t2.setEditable(false);
@@ -139,10 +144,18 @@ class Guess extends JFrame{
         int bestScore=100;
         public void actionPerformed(ActionEvent e){
             int a = Integer.parseInt(t1.getText());
-            if(count>=9){      //maximum guess has reached
-                j4.setText("YOU LOST THE MATCH");
-                j3.setText(rand+" is the answer!");
-                t1.setEditable(false);
+            if(count>9){      //maximum guess has reached
+                if(a==rand){
+                    j3.setText("CORRECT, YOU WIN!!!!");    
+                    bestScore = (10-count)*100;
+                    t2.setText(""+bestScore);
+                    t1.setEditable(false);
+                }
+                else{
+                    j4.setText("YOU LOST THE MATCH");
+                    j3.setText(rand+" is the answer!");
+                    t1.setEditable(false);
+                }
             }
             else{
                 if(a<rand){
