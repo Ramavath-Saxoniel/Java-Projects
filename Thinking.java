@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.ImageIcon;
 import javax.swing.*;
 
-public class Thinking extends Frame{
+public class Thinking extends JFrame{
     JLabel l1,l2,l3;
     JLabel ask, bgimgans;
     JButton play_again;
@@ -595,12 +595,14 @@ public class Thinking extends Frame{
                 count = count+5;
                 E.dispose();
                 ans.setText("Your number is "+count);
+                count = 0;
                 answer.setVisible(true);
             }
             if(e.getSource()==no5){
                 count = count+0;
                 E.dispose();
                 ans.setText("Your number is "+count);
+                count = 0;
                 answer.setVisible(true);
             }
             if(e.getSource()==play_again){
@@ -618,5 +620,4 @@ public class Thinking extends Frame{
         // TODO code application logic here
         new Thinking();
     }
-
 }
